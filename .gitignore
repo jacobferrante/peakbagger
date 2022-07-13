@@ -1,0 +1,5 @@
+# ignore python env
+/env
+
+#ignore app.pyc
+app.pyc
