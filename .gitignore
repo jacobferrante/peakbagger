@@ -7,5 +7,4 @@ app.pyc
 #ignore database file
 db.sqlite
 
-#ignore pycache
-/__pycache__
+
