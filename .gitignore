@@ -3,3 +3,6 @@
 
 #ignore app.pyc
 app.pyc
+
+#ignore database file
+db.sqlite
