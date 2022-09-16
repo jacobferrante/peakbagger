@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>peakbagger</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://vanillacss.com/vanilla.css">
+</head>
+
+<body>
+    <a href="/"><h1>peakbagger</h1></a>
+    <a href="/hike/create"><button>New Hike</button></a>
+<hr>
+<div class="content">
+
+    {% block content %}{% endblock %}
+
+</div>
+</body>
+
+</html>
