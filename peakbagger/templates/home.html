@@ -1,13 +1,24 @@
 {% extends "layout.html" %}
 {% block content %}
-<!-- Print out the entries in the database for hikes -->
-    {% for hike in hikes %}
-        <h3>{{ hike.name }}</h3>
-        <p> {{ hike.notes }} </p> 
-        <p> <a href="{{ hike.link }}">Strava</a></p>
 
-        <a href="/hike/update/{{ hike.id }}"><button>Update</button></a>
-        <a href="/hike/delete/{{ hike.id }}"><button>Delete</button></a>
-        
+<!-- Print out the entries in the database for hikes -->
+{% for hike in hikes %}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+	    <h5 class="card-title">{{ hike.name }}</h5>
+	    <p class="card-text">{{ hike.notes }} </p>
+	    <a href="{{ hike.link }}" class="card-link">Link to Hike</a>
+    
+        <hr> 
+
+	    <button type="button" value="{{ hike.id }}" id='updateHike'class="btn btn-secondary btn-sm">Update</button>
+            
+        <button type="button" value="{{ hike.id }}" id='deleteHike'class="btn btn-danger btn-sm">Delete</button>	  
+
+	</div>
+</div>
+
     {% endfor %}
+
 {% endblock content %}

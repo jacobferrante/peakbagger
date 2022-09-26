@@ -1,10 +1,59 @@
 {% extends "layout.html" %}
 {% block content %}
-<form method="POST" action="">
-    {{ form.hidden_tag() }}
-        {{ form.name }}
-        {{ form.notes }}
-        {{ form.link }}
-        {{ form.submit }}
-</form>
+
+   <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        
+	<!-- form for name of the hike --->
+	<fieldset class="form-group">
+            <div class="form-group">
+                {{ form.name.label(class="form-control-label") }}
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+			{% endfor %}
+                   </div>
+                {% else %}
+                    {{ form.name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+	    <!-- form for the notes of the hike --> 
+	    <div class="form-group">
+                {{ form.notes.label(class="form-control-label") }}
+                {% if form.notes.errors %}
+                    {{ form.notes(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.notes.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.notes(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+
+	<!-- form for the link of the hike -->
+	<div class="form-group">
+                {{ form.link.label(class="form-control-label") }}
+                {% if form.link.errors %}
+                    {{ form.link(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.link.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.link(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        
+	<!-- submit button for form -->
+	<div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
 {% endblock content %}
