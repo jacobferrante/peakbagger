@@ -1,5 +1,4 @@
 
-
 // new hike
 document.getElementById('newHike').addEventListener
 ('click', newHike);
@@ -14,26 +13,16 @@ fetch('/hike',{
 }
 
 
-// update 
-document.getElementById('updateHike').addEventListener
-('click', updateHike);
-
-function updateHike(){
-    fetch('hike/{{ hike.id }}',{
-    method: 'GET',
-    })
-    .then(response => {
-    window.location = response.url
-    })
-}
-
+// get ID numbers from buttons on jinja loop
+let itemID = document.getElementById('deleteHike').value
+itemID = `/hike/${itemID}`
 
 // delete
 document.getElementById('deleteHike').addEventListener
 ('click', deleteHike);
 
 function deleteHike(){
-    fetch('hike/{{ hike.id }}',{
+    fetch(itemID,{
     method: 'delete',
     })
     .then(response => {
@@ -41,3 +30,15 @@ function deleteHike(){
     })
 }
 
+// update 
+document.getElementById('updateHike').addEventListener
+('click', updateHike);
+
+function updateHike(){
+    fetch(itemID,{
+    method: 'GET',
+    })
+    .then(response => {
+    window.location = response.url
+    })
+}

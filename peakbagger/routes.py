@@ -25,31 +25,34 @@ def new_hike():
         return redirect('/')
     return render_template('create.html', form=form)
 
-# Update the hike
-
 ## Delete the hike
 @app.delete("/hike/<int:hike_id>")
-def delete(hike_id):
+def delete_hike(hike_id):
     hike = Hike.query.filter_by(id=hike_id).first()
     db.session.delete(hike)
     db.session.commit()
     return redirect('/')
 
+## Update the hike
+@app.get("/hike/<int:hike_id>")
+def get_hike(hike_id):
+    hike = Hike.query.filter_by(id=hike_id).first()
+    form = CreateHike()
+    form.name.data = hike.name
+    form.notes.data = hike.notes
+    form.link.data = hike.link
+    return render_template('create.html', form=form)
 
-#@app.put("/hike/<int:hike_id>") 
-#def update(hike_id):
-#    hike = Hike.query.filter_by(id=hike_id).first()
-#    form = CreateHike()
-#    ## Ask for user input to update hike
-#    if form.validate_on_submit():
-#        hike.name = form.name.data
-#        hike.notes = form.notes.data
-#        hike.link = form.link.data
-#        db.session.commit()
-#        return redirect('/')
-#    ## Populate form with the current database info for that item
-#    elif request.method == 'GET':
-#        form.name.data = hike.name
-#        form.notes.data = hike.notes
-#        form.link.data = hike.link
-#    return render_template('create.html', form=form)
+@app.post("/hike/<int:hike_id>")
+def update_hike(hike_id):
+    hike = Hike.query.filter_by(id=hike_id).first()
+    form = CreateHike()
+    hike.name = form.name.data
+    hike.notes = form.notes.data
+    hike.link = form.link.data
+    db.session.commit()
+    return redirect('/')
+
+
+
+    
