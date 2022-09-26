@@ -52,7 +52,4 @@ def update_hike(hike_id):
     hike.link = form.link.data
     db.session.commit()
     return redirect('/')
-
-
-
     
