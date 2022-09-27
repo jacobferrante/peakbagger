@@ -2,23 +2,20 @@
 {% block content %}
 
 <!-- Print out the entries in the database for hikes -->
+
+<div class="container text-center w-100 p-2">
 {% for hike in hikes %}
 
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-	    <h5 class="card-title">{{ hike.name }}</h5>
-	    <p class="card-text">{{ hike.notes }} </p>
-	    <a href="{{ hike.link }}" class="card-link">Link to Hike</a>
-    
-        <hr> 
-
-	    <button type="button" value="{{ hike.id }}" id='updateHike'class="btn btn-secondary btn-sm">Update</button>
-            
-        <button type="button" value="{{ hike.id }}" id='deleteHike'class="btn btn-danger btn-sm">Delete</button>	  
-
-	</div>
+<ul class="list-group">
+    <li class="list-group-item">{{ hike.name }}({{ hike.id }})</li>
+    <li class="list-group-item">{{ hike.notes }}</li>
+    <li class="list-group-item">{{ hike.link }}</li>
+</ul>
+<div container class="w50 p-2">
+	<button type="button" value="{{ hike.id }}" id='updateHike'class="btn btn-secondary btn-sm">Update</button>         
+    <button type="button" value="{{ hike.id }}" id='deleteHike'class="btn btn-danger btn-sm">Delete</button>	  
 </div>
-
     {% endfor %}
 
+</div>
 {% endblock content %}

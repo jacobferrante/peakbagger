@@ -7,3 +7,7 @@ class CreateHike(FlaskForm):
     notes = StringField('Notes', validators=[DataRequired(), Length(min=2, max=100)])
     link = StringField('Link', validators=[DataRequired(), Length(min=2, max=100)])
     submit = SubmitField('Save Hike')
+
+class ChangeHike(FlaskForm):
+    update = SubmitField('Update')
+    delete = SubmitField('delete')

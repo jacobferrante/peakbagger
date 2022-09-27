@@ -1,4 +1,31 @@
 
+
+// homepage 
+document.getElementById('hikeList').addEventListener
+('click', hikeList);
+
+function hikeList(){
+fetch('/',{
+    method: 'GET',
+})
+.then(response => {
+    window.location = response.url
+    })
+}
+
+// search 
+document.getElementById('searchHike').addEventListener
+('click', searchHike);
+
+function searchHike(){
+fetch('/',{
+    method: 'GET',
+})
+.then(response => {
+    window.location = response.url
+    })
+}
+
 // new hike
 document.getElementById('newHike').addEventListener
 ('click', newHike);
@@ -12,18 +39,16 @@ fetch('/hike',{
     })
 }
 
-
-// get ID numbers from buttons on jinja loop
+// delete hike
 let itemID = document.getElementById('deleteHike').value
 itemID = `/hike/${itemID}`
 
-// delete
 document.getElementById('deleteHike').addEventListener
 ('click', deleteHike);
 
-function deleteHike(){
+function deleteHike(){ 
     fetch(itemID,{
-    method: 'delete',
+    method: 'DELETE',
     })
     .then(response => {
     window.location = response.url
@@ -36,7 +61,7 @@ document.getElementById('updateHike').addEventListener
 
 function updateHike(){
     fetch(itemID,{
-    method: 'GET',
+    method: 'PUT',
     })
     .then(response => {
     window.location = response.url
