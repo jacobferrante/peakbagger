@@ -1,21 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- Print out the entries in the database for hikes -->
+<!-- Print out the entries in the database for posts -->
 
-<div class="container text-center w-100 p-2">
-{% for hike in hikes %}
+<div class="container text-center w-50 p-2">
+{% for post in posts %}
 
 <ul class="list-group">
-    <li class="list-group-item">{{ hike.name }}({{ hike.id }})</li>
-    <li class="list-group-item">{{ hike.notes }}</li>
-    <li class="list-group-item">{{ hike.link }}</li>
+    <li class="list-group-item">{{ post.name }}({{ post.id }})</li>
+    <li class="list-group-item">{{ post.notes }}</li>
+    <li class="list-group-item">{{ post.link }}</li>
 </ul>
+
 <div container class="w50 p-2">
-	<button type="button" value="{{ hike.id }}" id='updateHike'class="btn btn-secondary btn-sm">Update</button>         
-    <button type="button" value="{{ hike.id }}" id='deleteHike'class="btn btn-danger btn-sm">Delete</button>	  
+    {{ form.update(id="updatePost" )}}
+    {{ form.delete(id="deletePost") }} 
 </div>
-    {% endfor %}
+
+<div container class="w50 p-2">
+	<button type="button" id='updatePost'class="btn btn-secondary btn-sm">Update</button>         
+    <button type="button" id='deletePost'class="btn btn-danger btn-sm">Delete</button>	  
+</div>
+
+{% endfor %}
 
 </div>
 {% endblock content %}

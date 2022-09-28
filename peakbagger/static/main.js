@@ -1,6 +1,5 @@
 
-
-// homepage 
+// HOMEPAGE // 
 document.getElementById('hikeList').addEventListener
 ('click', hikeList);
 
@@ -13,24 +12,11 @@ fetch('/',{
     })
 }
 
-// search 
-document.getElementById('searchHike').addEventListener
-('click', searchHike);
+// NEW HIKE // 
+document.getElementById('newPost').addEventListener
+('click', newPost);
 
-function searchHike(){
-fetch('/',{
-    method: 'GET',
-})
-.then(response => {
-    window.location = response.url
-    })
-}
-
-// new hike
-document.getElementById('newHike').addEventListener
-('click', newHike);
-
-function newHike(){
+function newPost(){
 fetch('/hike',{
     method: 'GET',
 })
@@ -39,15 +25,11 @@ fetch('/hike',{
     })
 }
 
-// delete hike
-let itemID = document.getElementById('deleteHike').value
-itemID = `/hike/${itemID}`
+document.getElementById('deletePost').addEventListener
+('click', deletePost);
 
-document.getElementById('deleteHike').addEventListener
-('click', deleteHike);
-
-function deleteHike(){ 
-    fetch(itemID,{
+function deletePost(){ 
+    fetch("/hike/3",{
     method: 'DELETE',
     })
     .then(response => {
@@ -55,12 +37,12 @@ function deleteHike(){
     })
 }
 
-// update 
-document.getElementById('updateHike').addEventListener
-('click', updateHike);
+// UPDATE HIKE //  
+document.getElementById('updatePost').addEventListener
+('click', updatePost);
 
-function updateHike(){
-    fetch(itemID,{
+function updatePost(){
+    fetch("/hike/3",{
     method: 'PUT',
     })
     .then(response => {
