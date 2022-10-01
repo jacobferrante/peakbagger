@@ -20,7 +20,7 @@ document.getElementById('newPost').addEventListener
 ('click', newPost);
 
 function newPost(){
-fetch('/hike',{
+fetch('/post',{
     method: 'GET',
 })
 .then(response => {
@@ -50,7 +50,6 @@ function updatePost(event){
     console.log(form.post_id.value);
     console.log("/post/" + form.post_id.value);
     event.preventDefault();    
-
 
 }
 
