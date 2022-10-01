@@ -1,7 +1,5 @@
 {% extends "layout.html" %}
-{% block content %}
-
-<!-- Print out the entries in the database for posts -->
+{% block content %} <!-- Print out the entries in the database for posts -->
 
 <div class="container text-center w-50 p-2">
 {% for post in posts %}
@@ -12,15 +10,15 @@
     <li class="list-group-item">{{ post.link }}</li>
 </ul>
 
-<div container class="w50 p-2">
-    {{ form.update(id="updatePost" )}}
-    {{ form.delete(id="deletePost") }} 
-</div>
 
 <div container class="w50 p-2">
-	<button type="button" id='updatePost'class="btn btn-secondary btn-sm">Update</button>         
-    <button type="button" id='deletePost'class="btn btn-danger btn-sm">Delete</button>	  
+    <form>
+        <input type="hidden" name="post_id" value="{{ post.id }}">
+        {{ form.update(id="updatePost")}}
+        {{ form.delete(id="deletePost")}} 
+    </form>
 </div>
+
 
 {% endfor %}
 

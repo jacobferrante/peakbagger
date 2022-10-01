@@ -17,11 +17,6 @@ def post():
     form = CreatePost()
     return render_template('create.html', form=form)
 
-@app.get('/post')
-def post_search():
-    posts = Post.query.all()
-    return render_template("home.html", posts=posts)
-
 # POST new post using create form
 @app.post("/post")
 def new_post():

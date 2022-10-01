@@ -1,5 +1,6 @@
 
 // HOMEPAGE // 
+/*
 document.getElementById('hikeList').addEventListener
 ('click', hikeList);
 
@@ -11,8 +12,10 @@ fetch('/',{
     window.location = response.url
     })
 }
+*/
 
-// NEW HIKE // 
+
+// NEW POST // 
 document.getElementById('newPost').addEventListener
 ('click', newPost);
 
@@ -25,11 +28,12 @@ fetch('/hike',{
     })
 }
 
+// DELETE POST // 
 document.getElementById('deletePost').addEventListener
 ('click', deletePost);
 
 function deletePost(){ 
-    fetch("/hike/3",{
+    fetch("/post/3",{
     method: 'DELETE',
     })
     .then(response => {
@@ -37,15 +41,37 @@ function deletePost(){
     })
 }
 
-// UPDATE HIKE //  
+// UPDATE POST //  
 document.getElementById('updatePost').addEventListener
 ('click', updatePost);
 
-function updatePost(){
-    fetch("/hike/3",{
-    method: 'PUT',
+function updatePost(event){
+    let form = event.target.form;
+    console.log(form.post_id.value);
+    console.log("/post/" + form.post_id.value);
+    event.preventDefault();    
+
+
+}
+
+/*
+    fetch("/post/" + form.post_id.value,{
+    method: 'GET',
     })
     .then(response => {
     window.location = response.url
     })
-}
+*/ 
+
+// UPDATE POST //  
+//document.getElementById('updatePost').addEventListener
+//('click', updatePost);
+//
+//function updatePost(){
+//    fetch("/hike/1",{
+//    method: 'PUT',
+//    })
+//    .then(response => {
+//    window.location = response.url
+//    })
+//}
