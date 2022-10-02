@@ -1,24 +1,25 @@
 {% extends "layout.html" %}
-{% block content %}
+{% block content %} <!-- Print out the entries in the database for posts -->
 
-<!-- Print out the entries in the database for hikes -->
-{% for hike in hikes %}
+<div class="container text-center w-50 p-2">
+{% for post in posts %}
 
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-	    <h5 class="card-title">{{ hike.name }}</h5>
-	    <p class="card-text">{{ hike.notes }} </p>
-	    <a href="{{ hike.link }}" class="card-link">Link to Hike</a>
-    
-        <hr> 
+<ul class="list-group">
+    <li class="list-group-item">{{ post.name }}({{ post.id }})</li>
+    <li class="list-group-item">{{ post.notes }}</li>
+    <li class="list-group-item">{{ post.link }}</li>
+</ul>
 
-	    <button type="button" value="{{ hike.id }}" id='updateHike'class="btn btn-secondary btn-sm">Update</button>
-            
-        <button type="button" value="{{ hike.id }}" id='deleteHike'class="btn btn-danger btn-sm">Delete</button>	  
-
-	</div>
+<div container class="w50 p-2">
+    <form>
+        <input type="hidden" name="post_id" value="{{ post.id }}">
+        {{ form.update(class_="updatePost")}}
+        {{ form.delete(class_="deletePost")}} 
+    </form>
 </div>
 
-    {% endfor %}
 
+{% endfor %}
+
+</div>
 {% endblock content %}

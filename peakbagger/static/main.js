@@ -1,10 +1,9 @@
+// NEW POST // 
+document.getElementById('newPost').addEventListener
+('click', newPost);
 
-// new hike
-document.getElementById('newHike').addEventListener
-('click', newHike);
-
-function newHike(){
-fetch('/hike',{
+function newPost(){
+fetch('/post',{
     method: 'GET',
 })
 .then(response => {
@@ -12,31 +11,34 @@ fetch('/hike',{
     })
 }
 
+// GET UPDATE POST //  
 
-// get ID numbers from buttons on jinja loop
-let itemID = document.getElementById('deleteHike').value
-itemID = `/hike/${itemID}`
+for (let updatePostButton of document.getElementsByClassName('updatePost')) {
+    updatePostButton.addEventListener('click', updatePost);
+}
 
-// delete
-document.getElementById('deleteHike').addEventListener
-('click', deleteHike);
-
-function deleteHike(){
-    fetch(itemID,{
-    method: 'delete',
+function updatePost(event){
+    let form = event.target.form;
+    event.preventDefault();    
+    fetch("/post/" + form.post_id.value,{
+    method: 'GET',
     })
     .then(response => {
     window.location = response.url
     })
 }
 
-// update 
-document.getElementById('updateHike').addEventListener
-('click', updateHike);
+// DELETE POST //  
 
-function updateHike(){
-    fetch(itemID,{
-    method: 'GET',
+for (let deletePostButton of document.getElementsByClassName('deletePost')) {
+    deletePostButton.addEventListener('click', deletePost);
+}
+
+function deletePost(event){
+    let form = event.target.form;
+    event.preventDefault();    
+    fetch("/post/" + form.post_id.value,{
+    method: 'DELETE',
     })
     .then(response => {
     window.location = response.url
