@@ -56,5 +56,3 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     return redirect('/')
-
-
