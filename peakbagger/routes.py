@@ -3,7 +3,6 @@ from peakbagger import app, db
 from peakbagger.forms import CreatePost, ChangePost 
 from peakbagger.models import Post
 
-
 ## GET the home page
 @app.get("/")
 def home():
@@ -28,14 +27,6 @@ def new_post():
         return redirect('/')
     return render_template('create.html', form=form)
 
-## DELETE the selected db ID
-@app.delete("/post/<int:post_id>")
-def delete_post(post_id):
-    post = Post.query.filter_by(id=post_id).first()
-    db.session.delete(post)
-    db.session.commit()
-    return redirect('/')
-
 ## GET the create.html page and load in the db values for that certain ID 
 @app.get("/post/<int:post_id>")
 def get_post(post_id):
@@ -44,10 +35,10 @@ def get_post(post_id):
     form.name.data = post.name
     form.notes.data = post.notes
     form.link.data = post.link
-    return render_template('update.html', form=form)
+    return render_template('create.html', form=form)
 
-## PUT the new DB values on the create page
-@app.put("/post/<int:post_id>")
+## Update current ID on create page 
+@app.post("/post/<int:post_id>")
 def update_post(post_id):
     post = Post.query.filter_by(id=post_id).first()
     form = CreatePost()
@@ -57,4 +48,13 @@ def update_post(post_id):
         post.link = form.link.data
         db.session.commit()
         return redirect('/')
+
+## DELETE the selected db ID
+@app.delete("/post/<int:post_id>")
+def delete_post(post_id):
+    post = Post.query.filter_by(id=post_id).first()
+    db.session.delete(post)
+    db.session.commit()
+    return redirect('/')
+
 

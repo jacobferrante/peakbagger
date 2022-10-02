@@ -10,12 +10,11 @@
     <li class="list-group-item">{{ post.link }}</li>
 </ul>
 
-
 <div container class="w50 p-2">
     <form>
         <input type="hidden" name="post_id" value="{{ post.id }}">
-        {{ form.update(id="updatePost")}}
-        {{ form.delete(id="deletePost")}} 
+        {{ form.update(class_="updatePost")}}
+        {{ form.delete(class_="deletePost")}} 
     </form>
 </div>
 
