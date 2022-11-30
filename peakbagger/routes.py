@@ -47,7 +47,7 @@ def update_post(post_id):
         post.notes = form.notes.data
         post.link = form.link.data
         db.session.commit()
-        return redirect('/')
+    return redirect('/')
 
 ## DELETE the selected db ID
 @app.delete("/post/<int:post_id>")

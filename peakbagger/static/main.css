@@ -1,0 +1,95 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    width:100vw;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height:10vh;
+    background:#efefef;
+}
+
+nav h1 {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:0 1rem;
+    font-size:2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
+nav ul {
+    display:flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+    gap:2rem;
+    padding:2rem;
+}
+
+nav ul li {
+    font-size:1.25rem;
+    text-transform: uppercase;
+}
+
+nav a {
+    text-decoration: none;
+    color:inherit;
+    list-style: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+
+
+.container {
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center; 
+}
+
+.items {
+    display:flex;
+    flex-direction: row;
+    width:70vw;
+    align-items: center;
+    justify-content: center;
+    gap:2rem;
+    flex-wrap: wrap;
+}
+
+.item {
+    padding:1rem;
+    min-width:40vh;
+    min-height:40vh;
+    display:flex;
+    flex-direction: column;
+    background:#efefef;
+    text-decoration: none;
+    list-style: none; 
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+}
+
+.item h1 {
+    padding:2rem;
+}
+
+.item button {
+    padding:1rem;
+}
